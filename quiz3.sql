@@ -1,9 +1,9 @@
 --query
 
-SELECT SUM(orderdetails.priceEach*orderdetails.quantityOrdered) AS totalPriceCancelledSum
-FROM orderdetails JOIN orders 
+SELECT FORMAT(SUM(orderdetails.priceEach*orderdetails.quantityOrdered),2) AS totalPriceCancelledSum
+FROM orderdetails JOIN orders ON orderdetails.orderNumber = orders.orderNumber
 WHERE orders.status = "Cancelled"
 
 -- result--
-#orderdetails.priceEach,orderdetails.quantityOrdered,totalPriceCancelledSum
-'57625143.66'
+#totalPriceCancelledSum
+'238,854.18'
